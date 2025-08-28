@@ -6,7 +6,7 @@ import CardMetric from "./ui/dashboard/CardMetric";
 import JobDetailTable from "./ui/dashboard/JobDetailTable";
 import CategoryBlocks from "./ui/dashboard/CategoryBlocks";
 import LogModal from "./ui/dashboard/LogModal";
-import JobChart from "./ui/dashboard/JobChart"; 
+import JobChart from "./ui/dashboard/JobChart";
 import {
   generateJobData,
   generateChartData,
@@ -20,12 +20,18 @@ export default function Home() {
   const [selectedLog, setSelectedLog] = useState<any | null>(null);
   const [chartData, setChartData] = useState<any>({});
 
+
   useEffect(() => {
-    const generatedJobs = generateJobData();
-    setJobs(generatedJobs);
-    setFilteredJobs(generatedJobs);
-    setChartData(generateChartData(generatedJobs));
+    const fetchJobs = async () => {
+      const generatedJobs = await generateJobData();
+      setJobs(generatedJobs);
+      setFilteredJobs(generatedJobs);
+      setChartData(generateChartData(generatedJobs));
+    };
+
+    fetchJobs();
   }, []);
+
 
   return (
     <div className="flex">
@@ -78,7 +84,7 @@ export default function Home() {
             </div>
 
             {/* Bloques de Categoría */}
-            <div className="mt-6">
+            <div className="mt-6 border">
               <CategoryBlocks
                 jobs={jobs}
                 filterByCategory={(category: string) => {
@@ -91,7 +97,7 @@ export default function Home() {
             </div>
 
             {/* Tabla de Detalle */}
-            <div className="mt-6">
+            <div className="mt-6 border">
               <JobDetailTable
                 jobs={filteredJobs}
                 showLog={(id: number) => {

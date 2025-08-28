@@ -32,7 +32,7 @@ export default function JobDetailTable({
               <td className="px-4 py-2 border-t">{job.horaFin}</td>
               <td className="px-4 py-2 border-t">{job.duracion}</td>
               <td className={`px-4 py-2 border-t ${job.estado}`}>
-                {job.estado === "text-success" ? "OK" : job.estado === "text-danger" ? "Error" : "En Proceso"}
+                {/*job.estado === "text-success" ? "Finalizado" : job.estado === "text-danger" ? "Error" : "En Proceso"*/}
               </td>
               <td className="px-4 py-2 border-t text-center">
                 <button className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600" onClick={() => showLog(job.id)}>

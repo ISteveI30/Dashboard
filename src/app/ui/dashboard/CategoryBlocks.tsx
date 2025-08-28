@@ -35,11 +35,11 @@ export default function CategoryBlocks({
             <div className="p-4">
               {jobList.map((job: any) => (
                 <div
-                  key={job.id}
+                  key={job.id}//cambiar la logica a En proceso, Finalizado, Error
                   className={`p-2 my-1 rounded-md text-sm border-l-4 ${
-                    job.estado === "text-success"
+                    job.estado === "Finalizado"
                       ? "bg-green-100 border-green-500"
-                      : job.estado === "text-danger"
+                      : job.estado === "Error"
                       ? "bg-red-100 border-red-500"
                       : "bg-yellow-100 border-yellow-500"
                   }`}
